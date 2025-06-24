@@ -123,4 +123,17 @@
         app:layout_constraintStart_toEndOf="@+id/tvLon"
         app:layout_constraintTop_toBottomOf="@+id/etLat" />
 
+    <Button
+        android:id="@+id/butFindCoor"
+        android:layout_width="196dp"
+        android:layout_height="67dp"
+        android:text="Поиск координат"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butSave"
+        app:layout_constraintVertical_bias="0.5"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
