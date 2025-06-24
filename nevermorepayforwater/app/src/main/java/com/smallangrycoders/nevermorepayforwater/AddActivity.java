@@ -41,7 +41,30 @@ public class AddActivity extends Activity {
         btSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StCity stcity = new StCity(-1, etLoc.getText().toString(), "0", etLat.getText().toString(), etLon.getText().toString(), 1, LocalDateTime.now());
+                String city = etLoc.getText().toString().trim();
+                String latStr = etLat.getText().toString().trim();
+                String lonStr = etLon.getText().toString().trim();
+
+                if (city.isEmpty() || latStr.isEmpty() || lonStr.isEmpty()) {
+                    showToast("Пожалуйста, заполните все поля");
+                    return;
+                }
+
+                double lat, lon;
+                try {
+                    lat = Double.parseDouble(latStr);
+                    lon = Double.parseDouble(lonStr);
+                } catch (NumberFormatException e) {
+                    showToast("Широта и долгота должны быть числами");
+                    return;
+                }
+
+                if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+                    showToast("Недопустимые координаты");
+                    return;
+                }
+
+                StCity stcity = new StCity(-1, city, "0", latStr, lonStr, 1, LocalDateTime.now());
                 Intent intent = getIntent();
                 intent.putExtra("StCity", stcity);
                 setResult(RESULT_OK, intent);
